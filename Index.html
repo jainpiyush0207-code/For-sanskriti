@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sanskriti ❤️</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:#594651;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 10% 10%,#ffdce9,transparent 35%),
+    radial-gradient(circle at 90% 90%,#ddd8ff,transparent 35%),
+    linear-gradient(135deg,#fff7fa,#f7f5ff);
+}
+
+.screen{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:25px;
+  opacity:0;
+  visibility:hidden;
+  transform:translateX(40px);
+  transition:opacity .7s ease,transform .7s ease,visibility .7s;
+  overflow-y:auto;
+}
+
+.screen.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateX(0);
+}
+
+.card{
+  width:min(92%,760px);
+  max-height:92vh;
+  overflow-y:auto;
+  padding:42px 28px;
+  text-align:center;
+  border-radius:30px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(18px);
+  box-shadow:0 25px 70px rgba(90,60,90,.14);
+}
+
+.kicker{
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#a17f91;
+  margin-bottom:15px;
+}
+
+h1{
+  font-size:clamp(38px,9vw,65px);
+  color:#74566a;
+  margin-bottom:15px;
+}
+
+h2{
+  font-size:clamp(30px,7vw,46px);
+  color:#74566a;
+  margin-bottom:20px;
+}
+
+.text{
+  max-width:650px;
+  margin:0 auto 19px;
+  font-size:17px;
+  line-height:1.85;
+}
+
+.highlight{
+  color:#805d72;
+  font-weight:600;
+}
+
+button{
+  border:0;
+  padding:15px 28px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#c986a7,#9278b7);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:12px;
+  box-shadow:0 10px 25px rgba(130,90,140,.22);
+  transition:.3s;
+}
+
+button:hover{
+  transform:translateY(-3px) scale(1.02);
+}
+
+/* Bouquet */
+.bouquet{
+  position:relative;
+  width:280px;
+  height:310px;
+  margin:5px auto 20px;
+}
+
+.tulip{
+  position:absolute;
+  bottom:115px;
+  width:58px;
+  height:82px;
+  border-radius:50% 50% 45% 45%;
+  background:linear-gradient(135deg,#f6a7c1,#e9789e);
+  animation:sway 3s ease-in-out infinite;
+}
+
+.tulip:before,.tulip:after{
+  content:"";
+  position:absolute;
+  top:-8px;
+  width:30px;
+  height:35px;
+  border-radius:60% 40% 50% 50%;
+  background:inherit;
+}
+
+.tulip:before{left:3px;transform:rotate(-25deg)}
+.tulip:after{right:3px;transform:rotate(25deg)}
+
+.stem{
+  position:absolute;
+  width:5px;
+  height:145px;
+  background:#71926f;
+  left:50%;
+  top:65px;
+  transform-origin:top;
+}
+
+.leaf{
+  position:absolute;
+  width:70px;
+  height:25px;
+  background:#82a47d;
+  border-radius:100% 0 100% 0;
+  bottom:105px;
+}
+
+.t1{left:45px;bottom:125px}
+.t2{left:108px;bottom:155px;background:linear-gradient(135deg,#fff,#f4dce7)}
+.t3{left:170px;bottom:125px}
+.t4{left:75px;bottom:180px;background:linear-gradient(135deg,#fff,#f4dce7)}
+.t5{left:140px;bottom:185px}
+
+.s1{left:72px;transform:rotate(-8deg)}
+.s2{left:110px;transform:rotate(0)}
+.s3{left:153px;transform:rotate(8deg)}
+.s4{left:125px;transform:rotate(-3deg)}
+
+.l1{left:30px;transform:rotate(25deg)}
+.l2{right:25px;transform:scaleX(-1) rotate(25deg)}
+
+.wrap{
+  position:absolute;
+  bottom:20px;
+  left:45px;
+  width:190px;
+  height:120px;
+  background:linear-gradient(135deg,#f4e4e9,#e8d7df);
+  clip-path:polygon(5% 0,95% 0,78% 100%,22% 100%);
+  border-radius:5px;
+}
+
+.ribbon{
+  position:absolute;
+  bottom:20px;
+  left:135px;
+  width:12px;
+  height:85px;
+  background:#d49bb2;
+}
+
+@keyframes sway{
+  0%,100%{transform:rotate(-2deg)}
+  50%{transform:rotate(3deg)}
+}
+
+/* Silk */
+.chocolate{
+  width:180px;
+  height:100px;
+  margin:25px auto;
+  border-radius:12px;
+  background:linear-gradient(135deg,#7b3f67,#a45b82);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:25px;
+  font-weight:bold;
+  box-shadow:0 15px 35px rgba(100,50,90,.2);
+  transform:rotate(-4deg);
+}
+
+/* floating hearts */
+.heart{
+  position:fixed;
+  bottom:-30px;
+  pointer-events:none;
+  animation:float 9s linear forwards;
+  opacity:.55;
+  z-index:10;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:0}
+  15%{opacity:.55}
+  100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+.quote{
+  max-width:600px;
+  margin:25px auto;
+  padding:24px;
+  border-radius:22px;
+  background:rgba(255,255,255,.65);
+  font-style:italic;
+  line-height:1.8;
+}
+
+.signature{
+  margin-top:30px;
+  font-size:19px;
+  color:#805d72;
+  font-weight:600;
+}
+
+@media(max-width:600px){
+  .card{padding:35px 19px}
+  .text{font-size:16px}
+  .bouquet{transform:scale(.85);margin-top:-15px;margin-bottom:-5px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="screen active" id="page1">
+  <div class="card">
+
+    <div class="kicker">A little surprise for you…</div>
+
+    <div class="bouquet">
+      <div class="stem s1"></div>
+      <div class="stem s2"></div>
+      <div class="stem s3"></div>
+      <div class="stem s4"></div>
+
+      <div class="tulip t1"></div>
+      <div class="tulip t2"></div>
+      <div class="tulip t3"></div>
+      <div class="tulip t4"></div>
+      <div class="tulip t5"></div>
+
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+
+      <div class="wrap"></div>
+      <div class="ribbon"></div>
+    </div>
+
+    <h1>For You, Buddy ❤️</h1>
+
+    <p class="text">
+      Because you deserve a little something beautiful today. 🌷
+    </p>
+
+    <button onclick="nextPage(2)">
+      Take these flowers 🌷
+    </button>
+
+  </div>
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="screen" id="page2">
+  <div class="card">
+
+    <div class="kicker">Okay… now listen, Buddy</div>
+
+    <h2>Hey Buddy, Sanskriti ❤️</h2>
+
+    <p class="text">
+      I know you said everything is okay and you just don't feel like
+      talking right now.
+    </p>
+
+    <p class="text">
+      So don't worry… I'm not here to ask you what's wrong.
+      And I'm definitely not going to keep saying,
+      <span class="highlight">“Bata na, kya hua?” 😭</span>
+    </p>
+
+    <p class="text">
+      Sometimes you just don't feel like talking,
+      and that's completely okay.
+    </p>
+
+    <p class="text">
+      You can take your time.<br>
+      You can have your space.<br>
+      You don't have to explain anything.
+    </p>
+
+    <p class="text">
+      I just wanted to make this little thing for you because…
+    </p>
+
+    <p class="text">
+      well, you're my buddy. 🫶
+    </p>
+
+    <button onclick="nextPage(3)">
+      There's something else… 💌
+    </button>
+
+  </div>
+</section>
+
+
+<!-- PAGE 3 -->
+<section class="screen" id="page3">
+  <div class="card">
+
+    <div class="kicker">A very important thought 😂</div>
+
+    <h2>One tiny problem…</h2>
+
+    <p class="text">
+      I may not know the perfect way to make your mood better…
+    </p>
+
+    <p class="text">
+      Otherwise ek <span class="highlight">Silk</span> bhej deta.
+      😂🍫
+    </p>
+
+    <div class="chocolate">
+      SILK 🍫
+    </div>
+
+    <p class="text">
+      I know you love that stuff. 😌
+    </p>
+
+    <p class="text">
+      But since I can't magically fix everything with chocolate,
+      I'll just leave you with this little reminder:
+    </p>
+
+    <p class="text">
+      <span class="highlight">You don't always have to be okay.</span>
+    </p>
+
+    <button onclick="nextPage(4)">
+      One last thing… 🫶
+    </button>
+
+  </div>
+</section>
+
+
+<!-- PAGE 4 -->
+<section class="screen" id="page4">
+  <div class="card">
+
+    <div class="kicker">Just a little reminder</div>
+
+    <h2>I'm right here, Buddy. ❤️</h2>
+
+    <p class="text">
+      And even on the days when you don't feel like talking,
+      please remember that there's someone on the other side of
+      the screen who genuinely cares about you.
+    </p>
+
+    <div class="quote">
+      So take a breath.<br>
+      Put on your favourite song.<br>
+      Have your Silk. 😂<br>
+      Get some rest.
+    </div>
+
+    <p class="text">
+      And whenever you feel like talking…
+    </p>
+
+    <p class="text">
+      <span class="highlight">I'm right here, Buddy. ❤️</span>
+    </p>
+
+    <p class="text">
+      No pressure.<br>
+      No explanations required.
+    </p>
+
+    <p class="text">
+      Just me being your annoying friend from the other side
+      of the screen. 😌😂
+    </p>
+
+    <div class="quote">
+      <strong>One last thing…</strong><br><br>
+
+      I don't know exactly what you're going through today,
+      and maybe you don't even want to tell me.
+      That's okay.
+      <br><br>
+
+      I just hope that whenever you see this,
+      you smile at least a little.
+      <br><br>
+
+      Because that's literally the only mission of this entire
+      website. 😂❤️
+    </div>
+
+    <p class="text">
+      Take care of yourself, Buddy. 🫶
+    </p>
+
+    <p class="text">
+      And please…
+      don't get too emotional after reading this.
+      <span class="highlight">
+        Meri itni mehnat waste mat karna. 😂❤️
+      </span>
+    </p>
+
+    <div class="signature">
+      — Your idiot friend,<br>
+      Dheeraj ❤️
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+
+function nextPage(number){
+
+  document.querySelectorAll(".screen").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.getElementById("page"+number).classList.add("active");
+}
+
+
+/* Floating hearts */
+
+const symbols=["❤️","💗","💕","♡","✨","🌷"];
+
+function createHeart(){
+
+  const heart=document.createElement("div");
+
+  heart.className="heart";
+
+  heart.textContent=
+    symbols[Math.floor(Math.random()*symbols.length)];
+
+  heart.style.left=Math.random()*100+"vw";
+
+  heart.style.fontSize=
+    (14+Math.random()*17)+"px";
+
+  heart.style.animationDuration=
+    (7+Math.random()*6)+"s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },14000);
+}
+
+setInterval(createHeart,900);
+
+</script>
+
+</body>
+</html>
